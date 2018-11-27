@@ -1,0 +1,68 @@
+var express = require('express');
+var router = express();
+var mysql = require('mysql');
+var bodyParser = require('body-parser');
+/*var async = require('async');*/
+
+var connection = mysql.createConnection({
+    host: 'tutorial-db-instance.clfqitupovty.ap-northeast-2.rds.amazonaws.com',
+    user: 'tutorial-db-instance',
+    password: '19940516',
+    database: 'sample'
+});
+connection.connect(function (err) {
+    if (!err) {
+        console.log("Database is connected ... \n\n");
+    } else {
+        console.log("Error connecting database ... \n\n");
+    }
+});
+
+router.locals.pretty = true;
+router.use(express.static('public'));
+router.set('view engine', 'ejs');
+router.use(express.static('./views'));
+router.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+router.get('/cloud', function (req, res) {
+    res.render('cloud');})
+router.post('/cloud/post', function (req, res) {
+    var put = req.body.put;
+    var sql = `INSERT INTO cloud /cloud/ VALUES (?)`;
+    connection.query(sql, put, function (err, results) {
+        res.redirect('/cloud/get');
+    });
+});
+
+router.get('/cloud/get', function (req, res) {
+    var result = '';
+    var sql = `SELECT * FROM cloud`;
+    connection.query(sql, function (err, results) {
+         for(var i=0; i<results.length; i++){
+                 result = results[i];
+         }
+        var output = `
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title></title>
+    </head>
+    <body>
+        Result!
+        <ul>
+          ${result}
+        </ul>
+
+    </body>
+  </html>`;
+           res.send(output);
+    });
+});
+
+router.listen(9000, function () {
+    console.log('connect 9000 port');
+});
+

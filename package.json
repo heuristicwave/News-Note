@@ -1,12 +1,12 @@
 {
-  "name": "nodebird",
+  "name": "jihun",
   "version": "0.0.1",
-  "description": "익스프레스로 만드는 SNS 서비스",
+  "description": "뉴스 모음 서비스",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app"
   },
-  "author": "ZeroCho",
+  "author": "jihun",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^2.0.1",
@@ -19,7 +19,6 @@
     "multer": "^1.3.0",
     "mysql2": "^1.6.4",
     "passport": "^0.4.0",
-    "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
     "pug": "^2.0.3",
     "sequelize": "^4.41.2"

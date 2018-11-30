@@ -1,0 +1,1415 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="format-detection" content="telephone=no"/>
+<!-- sns 공유를 위한 meta : S -->
+<meta property="og:title"			content="텐센트, 지스타 2018에서 클라우드 게이밍 솔루션 시범"/>
+<meta property="og:type"			content="website"/>
+<meta property="og:url"				content="http://www.hellot.net/new_hellot/magazine/magazine_read.html?code=202&sub=004&idx=43798"/>
+<meta property="og:image"			content="http://www.hellot.net/_UPLOAD_FILES/magazine/image/thumbnail_1543190361.jpg"/>
+<meta property="og:description"		content="텐센트, 지스타 2018에서 클라우드 게이밍 솔루션 시범"/>
+<!-- sns 공유를 위한 meta : E -->
+<meta name="description" content="텐센트, 지스타 2018에서 클라우드 게이밍 솔루션 시범" /><meta name="keyword" content="첨단, 헬로티, 텐센트클라우드, 텐센트 위테스트, 인텔, 지스타, 게이밍솔루션, 게이밍플랫폼, SDK, 엣지컴퓨팅" /><link rel="shortcut icon" href="/new_hellot/images/common/favicon.ico">
+<link rel="stylesheet" type="text/css" media="screen" href="/new_hellot/css/common.css?version=01">
+<link rel="stylesheet" type="text/css" media="screen" href="/new_hellot/css/layout_re.css?reversion=07">
+<link rel="stylesheet" type="text/css" media="screen" href="/new_hellot/css/main_re.css?version=02">
+<link rel="stylesheet" type="text/css" media="screen" href="/new_hellot/css/tslide.css">
+<link rel="stylesheet" type="text/css" media="screen" href="/jquery/css/redmond/jquery-ui-custom.css?version=01">
+<script type="text/javascript" language="JavaScript" src="/admin/js/onlyNumber.js"></script>
+<script type="text/javascript" language="JavaScript" src="/js/common.js"></script>
+<script type="text/javascript" language="JavaScript" src="/jquery/jquery.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="/jquery/jquery.cookie.js"></script>
+<script type="text/javascript" language="JavaScript" src="/jquery/jquery-ui-custom.min.js"></script>
+<script type="text/javascript" language="JavaScript" src="/jquery/jquery.marquee.js"></script>
+<script type="text/javascript" language="JavaScript" src="/jquery/jquery.sns.js"></script>
+<script type="text/javascript" language="JavaScript" src="/jquery/swf_include.js"></script>
+<script type="text/javascript" src="/new_hellot/js/main.js"></script>
+<script type="text/javascript" src="/new_hellot/js/slides.min.jquery.js"></script>
+
+<script type="text/javascript">
+var bannerWin;
+var insert_add_flag = "N";
+$(document).ready(function(){
+
+	$(".fullMenu > a").click(function(){
+		if($(".fullMenu > a").hasClass("current")){
+			$("div.fullMenuView").slideUp();
+			$(".fullMenu > a").removeClass("current");
+		} else {
+			$("div.fullMenuView").slideDown();
+			$(".fullMenu > a").addClass("current");
+			$(".Depth").slideUp();
+		}
+	});
+
+	$(".fullMenuclose").click(function(){
+		$(".fullMenu > a").removeClass("current");
+		$(this).parent().parent().slideUp()
+	});
+
+	$(".depthClose").click(function(){
+		$(".etcMenu a").removeClass("current");
+		$(".gnbMenu a").removeClass("current");
+		$(this).parent().parent().parent().slideUp()
+	});
+
+	$(".topNews em").on("click",function(){
+		var idx = $(this).parent().parent().parent().parent().attr("id");
+		$("#"+idx).find(".topNews em").removeClass("current");
+		$("#"+idx).find(".topNews img").removeClass("current");
+		$(this).prev().addClass("current");
+		$(this).addClass("current");
+	});
+
+	$(".topBanner em").on("click",function(){
+		var idx = $(this).parent().parent().parent().parent().attr("id");
+		$("#"+idx).find(".topBanner em").removeClass("current");
+		$("#"+idx).find(".topBanner img").removeClass("current");
+		$(this).prev().addClass("current");
+		$(this).addClass("current");
+	});
+
+	$(".gnbMenu a").on("click",function(){
+		var idx = $(this).parent().index();
+		$(".fullMenu > a").removeClass("current");
+		$(".gnbMenu a").removeClass("current");
+		$("div.fullMenuView").slideUp();
+		$(this).addClass("current");
+		$(".Depth").not($(".Depth").eq(idx)).slideUp();
+		$(".Depth").eq(idx).slideDown();
+	});
+
+	$(".etcMenu a").on("click",function(){
+		var idx = $(this).index()+4;
+
+		$(".fullMenu > a").removeClass("current");
+		$(".etcMenu a").removeClass("current");
+		$(".gnbMenu a").removeClass("current");
+		$("div.fullMenuView").slideUp();
+
+		$(this).addClass("current");
+		$(".Depth").not($(".Depth").eq(idx)).slideUp();
+		$(".Depth").eq(idx).slideDown();
+	});
+
+	$(".layerBox").click(function(){
+		$(".layer").hide();
+		var idx = $(this).parent().index();
+		$("#Cover"+idx).show();
+	});
+	$(".close").click(function(){
+		$(this).parent().hide();
+	});
+
+    // 팝업오픈 -- 2014.1.29
+    $(".popup").click(function(){
+        rel = $(this).attr('rel');
+        bannerWin = window.open();
+
+        $.post('../include/banner_click.php', {'idx': rel}, function(data) {
+            if (data !="no") {
+            	bannerWin.location = "http://"+data;
+            }
+        });
+        return false;
+    });
+	
+	/*var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson');
+
+		for (var word in mobileKeyWords){
+			if (navigator.userAgent.match(mobileKeyWords[word]) != null){ //모바일
+
+				break;
+			}else{
+
+			}
+		}*/
+		
+	$(".allmenu").click(function(){
+		allopen();
+	});	
+	$(".sitemap").mouseleave(function(){
+		allclose();
+	});
+	$("#GNB a").mouseover(function(){
+		allclose();
+	});	
+	
+	/*이벤트 고정 메뉴 S*/
+	var quick_menu = $('#quick');
+	var quick_1 = $('#quick_1');
+	var quick_top = 290;
+		
+	quick_menu.css('left', (document.body.clientWidth/2) + 500 );
+	quick_1.css('left',(document.body.clientWidth / 2) - 665);
+	
+	$(window).resize(function(){
+		quick_menu.css('left', (document.body.clientWidth/2) + 500 );
+		quick_1.css('left',(document.body.clientWidth / 2) - 665);
+	});
+	quick_menu.animate( { "top": $(document).scrollTop() + quick_top +"px" }, 500 ); 
+	quick_1.animate({"top" : $(document).scrollTop() + quick_top + "px"}, 500);
+	/*이벤트 고정 메뉴 E*/											
+});
+
+//상단 검색
+function searchKeyEnter() {
+	if(event.keyCode=='13'){
+		searchSubmit();
+	}
+}
+
+function searchSubmit() {
+	if(!$("#search_keyword").val()){
+		alert("검색어를 입력해주세요");
+		$("#search_keyword").focus();
+		return;
+	}
+
+	var _keyword = $("#search_keyword").val();
+	$("#searchForm").submit();
+}
+
+function loginCheck(){
+	var form = document.loginForm;
+	if(!form.mID.value){
+		alert("로그인할 아이디를 입력해 주세요.");
+		form.mID.focus();
+		return false;
+	}
+	if(!form.pwd.value){
+		alert("로그인할 비밀번호를 입력해 주세요.");
+		form.pwd.focus();
+		return false;
+	}
+}
+function allopen(){
+	$(".sitemap").css("display","block");
+}
+
+function allclose(){
+	$(".sitemap").css("display","none");
+}
+</script>
+<title>
+텐센트, 지스타 2018에서 클라우드 게이밍 솔루션 시범</title>
+</head>
+<body>
+<script> insert_add_flag = "Y"; function insert_add(){ $(".bbs p:eq(6)").after("<div class=\"magazine_ad_sty01\"><img src='/_UPLOAD_FILES/banner/image/banner_1537340578.gif' width='336' height='280' rel='609' class='popup' style='cursor:pointer;' alt='한국NI-네오다임'></div>");} </script><iframe marginwidth="0" marginheight="0" scrolling="no" frameborder="0" allowtransparency="true" name="iFrame" id="iFrame" style="display:none;"></iframe>
+
+	
+	<!-- 1 -->
+	<div id='quick_1' style='position: absolute; z-index: 2; top: 0; left: 0;' class='hidden-sm hidden-xs'>
+	<img src='/_UPLOAD_FILES/banner/image/banner_1531444325.gif' width='160' height='600' rel='579' class='popup' style='cursor:pointer;' alt='교육원 법정의무교육 2018.07.13'>	</div>
+	
+	<!-- 9 -->
+	<div id='quick' style='position:absolute;z-index:2;top:0;left:0;width:160px; padding-left:5px;'>
+	<img src='/_UPLOAD_FILES/banner/image/banner_1521606140.jpg' width='160' height='600' rel='484' class='popup' style='cursor:pointer;' alt='성안당 더테이블 2018.03.21'>	</div>
+
+<div id="Header">
+	<div class="HeaderBanner">
+		<p>
+			<img src='/_UPLOAD_FILES/banner/image/banner_1541199952.jpg' width='980' height='80' rel='620' class='popup' style='cursor:pointer;' alt='마우저 2018.11'>		</p>
+	</div>
+	
+	<div class="HeaderArea">
+    	<div class="floor1">
+			<div>
+				<ul>
+					<li class="active"><a href="http://www.hellot.net">뉴스</a></li>
+					<li><a href="http://www.chomdanmarket.com">마켓</a></li>
+					<li><a href="http://exhibition.hellot.net">전시/컨퍼런스</a></li>
+					<li><a href="http://magazine.hellot.net">첨단프리미엄</a></li>  <!-- <img  src="../images/header/28free.gif"> -->
+					<li><a href="http://www.hellot.net/new_hellot/vod/vod_view.php">헬로VOD</a></li>
+					<li><a href="http://www.kmgbiz.com" target="_blank"><span style="font-weight: bold; color: #666;">국민경제</span><img  src="../images/header/icon_kmg.gif" alt="new" ></a></li>
+				</ul>
+				<div class="usermenu">
+										<!-- s:로그아웃시 노출 -->
+					<a href="https://www.hellot.net/new_hellot/member/login.html" class="link">로그인</a>
+					<span>|</span>
+					<a href="https://www.hellot.net/new_hellot/member/join_main_new.html" class="link">회원가입</a>
+					<span>|</span>
+					<!-- e:로그아웃시 노출 -->
+					
+					<a href="http://eng.chomdan.co.kr/chomdan_html/chomdan_main_en.html" target="_blank" class="link">English</a>
+				</div>
+			</div>
+        </div>
+		
+		<div class="floor2">
+				<h1><a href="http://www.hellot.net"><img src="../images/header/img_logo_news.png" alt="헬로티로고"></a></h1>
+	<!-- 검색 : s -->
+	<div class="TopSearch" id="search">
+		<form action="/new_hellot/search/integrated_search.php" method="get">
+			<input name="tab" type="hidden" value="all">  
+			<fieldset>
+				<legend>검색</legend>
+				<div class="search-area" id="AutoBox">
+					<input id="search_keyword" name="search_keyword" title="검색어" class="sch" type="text" >
+					<input class="button-search" type="image" alt="버튼" src="../images/header/btn_search_input.gif">
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<!-- 검색 : e -->
+	<a class="allmenu">
+		<img src="../images/header/btn_allview.gif" alt="전체메뉴">
+	</a>
+	<p class="r_bnr">
+	<img src='/_UPLOAD_FILES/banner/image/banner_1487831110.gif' width='195' height='53' rel='353' class='popup' style='cursor:pointer;' alt='BCC 몰'>	</p>    	</div>
+    	
+    	<div class="floor3">
+		  	<!-- gnb 시작-->
+	<div id="topgnb">
+		<div id="GNB">
+			<a href="../main/index.html" ><img src="../images/header/icon_home.png" alt="">뉴스 홈</a>
+			<a href="../magazine/magazine_list.html?code=201" >기계·FA</a>
+			<a href="../magazine/magazine_list.html?code=202" class="on">전자·ICT</a>
+			<a href="../magazine/magazine_list.html?code=203" >전기·에너지</a>
+			<a href="../magazine/magazine_list.html?code=204" >피플&amp;컴퍼니</a>
+			<a href="../magazine/magazine_list.html?code=205" >지식커뮤니티</a>
+			<div>
+				<ul>
+					<li><a href="../magazine/magazine_list.html?code=201">전체기사</a></li>
+					<li><a href="../magazine/magazine_list.html?code=201&amp;sub=001">스페셜리포트</a></li>
+					<li><a href="../magazine/magazine_list.html?code=201&amp;sub=002">테크인사이트</a></li>
+					<li><a href="../magazine/magazine_list.html?code=201&amp;sub=003">마켓트렌드</a></li>
+					<li><a href="../magazine/magazine_list.html?code=201&amp;sub=004">뉴스&amp;프로덕트</a></li>
+				</ul>
+				<ul>
+					<li><a href="../magazine/magazine_list.html?code=202">전체기사</a></li>
+					<li><a href="../magazine/magazine_list.html?code=202&amp;sub=001">스페셜리포트</a></li>
+					<li><a href="../magazine/magazine_list.html?code=202&amp;sub=002">테크인사이트</a></li>
+					<li><a href="../magazine/magazine_list.html?code=202&amp;sub=003">마켓트렌드</a></li>
+					<li><a href="../magazine/magazine_list.html?code=202&amp;sub=004">뉴스&amp;프로덕트</a></li>
+				</ul>
+				<ul>
+					<li><a href="../magazine/magazine_list.html?code=203">전체기사</a></li>
+					<li><a href="../magazine/magazine_list.html?code=203&amp;sub=001">스페셜리포트</a></li>
+					<li><a href="../magazine/magazine_list.html?code=203&amp;sub=002">테크인사이트</a></li>
+					<li><a href="../magazine/magazine_list.html?code=203&amp;sub=003">마켓트렌드</a></li>
+					<li><a href="../magazine/magazine_list.html?code=203&amp;sub=004">뉴스&amp;프로덕트</a></li>
+				</ul>
+				<ul>
+					<li><a href="../magazine/magazine_list.html?code=204">전체기사</a></li>
+					<li><a href="../magazine/magazine_list.html?code=204&amp;sub=001">피플</a></li>
+					<li><a href="../magazine/magazine_list.html?code=204&amp;sub=002">컴퍼니</a></li>
+				</ul>
+				<ul>
+					<li><a href="../magazine/magazine_list.html?code=205">전체기사</a></li>
+					<li><a href="../magazine/magazine_list.html?code=205&amp;sub=001">지식채널</a></li>
+					<li><a href="../magazine/magazine_list.html?code=205&amp;sub=002">지식포럼</a></li>
+                    
+					<li><a href="../magazine/magazine_list.html?code=205&amp;sub=008">디지털라이프</a></li>
+					<li><a href="../magazine/magazine_list.html?code=205&amp;sub=009">헬로티 라이브러리</a></li>
+					<!--<li><a href="../magazine/magazine_list.html?code=205&amp;sub=003">지식토크</a></li>-->
+					<!--<li><a href="../magazine/magazine_list.html?code=205&amp;sub=005">컬쳐&amp;라이프</a></li>-->
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- gnb 끝-->
+		<!-- 전체메뉴 S-->
+		<div class="sitemap" style="z-index:1001; display:none;">
+			<div class="sitemap_container">
+            	<!-- 1단메뉴 시작-->
+				<div>
+                	<div style="width:200px; margin:0 20px;">
+                    	<dl>
+                            <dt><a href="/new_hellot/main/index.html">뉴스</a></dt>
+                            <dd><a href="/new_hellot/magazine/magazine_list.html?code=201">- 기계·FA</a></dd>
+                            <dd><a href="/new_hellot/magazine/magazine_list.html?code=202">- 전자·ICT</a></dd>
+                            <dd><a href="/new_hellot/magazine/magazine_list.html?code=203">- 전기·에너지</a></dd>
+                            <dd><a href="/new_hellot/magazine/magazine_list.html?code=204">- 피플&amp;컴퍼니</a></dd>
+                            <dd><a href="/new_hellot/magazine/magazine_list.html?code=205">- 지식커뮤니티</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><a href="/new_hellot/company/company01.html">회사소개</a></dt>
+                            <dd><a href="/new_hellot/company/company01.html">- 소개</a></dd>
+                            <dd><a href="/new_hellot/company/company02.html">- 주요실적 및 연혁</a></dd>
+                            <!--<dd><a href="">- 비즈니스 소개</a></dd>-->
+                            <dd><a href="/new_hellot/company/company03.html">- 조직도</a></dd>
+                            <dd><a href="/new_hellot/company/company04.html">- 오시는길</a></dd>
+                        </dl>
+                        <dl>
+                            <dt><a href="">소셜채널</a></dt>
+                            <dd><a href="http://tvcast.naver.com/chomdan" target="_blank">- 네이버 TV 캐스트</a></dd>
+                            <dd><a href="https://www.youtube.com/channel/UCFBkQZGLFwDQ1wuLpS3sXNQ" target="_blank">- 유튜브 TV 채널</a></dd>
+                            <dd><a href="http://blog.naver.com/tgoon21" target="_blank">- 네이버 헬로티 블로그</a></dd>
+                            <dd><a href="http://blog.naver.com/chomdan_" target="_blank">- 네이버 마켓 블로그</a></dd>
+                            <dd><a href="http://blog.daum.net/chomdan1983" target="_blank">- 다음 마켓 블로그</a></dd>
+                        </dl>
+                    </div>
+				</div>
+                <!-- 1단메뉴 끝-->
+                
+                <!-- 2단메뉴 시작-->
+				<div>
+                	<div style="width:200px; margin:0 20px;">
+					<dl>
+						<dt><a href="http://www.chomdanmarket.com">마켓</a></dt>
+						<dd><a href="http://www.chomdanmarket.com/index.php?route=product/category&amp;path=151">- 금형 · 공작기계</a></dd>
+						<dd><a href="http://www.chomdanmarket.com/index.php?route=product/category&amp;path=403">- 전자 · 정보 · 보안</a></dd>
+						<dd><a href="http://www.chomdanmarket.com/index.php?route=product/category&amp;path=725">- 공장자동화</a></dd>
+						<dd><a href="http://www.chomdanmarket.com/index.php?route=product/category&amp;path=914">- 전기 · 에너지</a></dd>
+						<dd><a href="http://www.chomdanmarket.com/index.php?route=product/category&amp;path=1107">- 공구/자재</a></dd>
+						<dd><a href="http://www.chomdanmarket.com/index.php?route=product/category&amp;path=1403">- 산업일반</a></dd>
+						<dd><a href="http://www.chomdanmarket.com/index.php?route=exhibition/list">- 스페셜관</a></dd>
+					</dl>
+					<dl>
+						<dt><a href="/new_hellot/customer/customer_main.html">고객센터</a></dt>
+						<dd><a href="/new_hellot/customer/customer_faq.html">- FAQ</a></dd>
+						<dd><a href="/new_hellot/customer/customer_write.html">- 1:1문의</a></dd>
+						<dd><a href="/new_hellot/customer/customer_notice.html">- 공지사항</a></dd>
+						<!--<dd><a href="">- 회원탈퇴</a></dd>-->
+					</dl>
+					<dl>
+						<dt><a href="#">BM패밀리 사이트</a></dt>
+					   <dd><a href="http://www.cyber.co.kr/" target="_blank">- 성안당</a></dd>
+					   <dd><a href="http://edu.cyber.co.kr/" target="_blank">- 사이버출판사</a></dd>
+					   <dd><a href="http://biz.chomdan.co.kr/" target="_blank">- BIZ CHOMDAN</a></dd>
+					</dl>
+				</div>
+                </div>
+                <!-- 2단메뉴 끝-->
+                
+                <!-- 3단메뉴 시작-->
+				<div>
+					<div style="width:200px; margin:0 20px;">
+					<dl>
+						<dt><a href="http://exhibition.hellot.net">전시/컨퍼런스</a></dt>
+						<dd><a href="http://exhibition.hellot.net/exhibit/schedule/scheduleList.do?exhType=all">- 행사일정</a></dd>
+						<dd><a href="http://exhibition.hellot.net/exhibit/storyList.do">- 현장스토리</a></dd>
+						<dd><a href="http://exhibition.hellot.net/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_AAAAAAAAAAAA&amp;userPage=Y">- 뉴스</a></dd>
+						<dd><a href="http://exhibition.hellot.net/exhibit/MainHellot.do">- 헬로티 행사</a></dd>
+					</dl>
+					<dl>
+						<dt><a href="/new_hellot/magazine_info/ad_info_re01.html">광고안내</a></dt>
+						<dd><a href="/new_hellot/magazine_info/ad_info_re01.html">- 국내광고문의</a></dd>
+						<dd><a href="/new_hellot/magazine_info/ad_info_world.html">- 해외광고문의</a></dd>
+					</dl>
+					<dl>
+						<dt><a href="/new_hellot/customer/customer_write.html?type=adver">광고제작안내</a></dt>
+						<dd><a href="/new_hellot/customer/customer_write.html?type=video">- 영상촬영/편집</a></dd>
+						<dd><a href="/new_hellot/customer/customer_write.html?type=design">- 디자인기획/제작</a></dd>
+						<dd><a href="/new_hellot/customer/customer_write.html?type=web">- 웹사이트개발/ 호스팅</a></dd>
+						<dd><a href="/new_hellot/customer/customer_write.html?type=diary">- 다이어리제작</a></dd>
+					</dl>
+				</div>
+                </div>
+                <!-- 3단메뉴 끝-->
+                
+                <!-- 4단메뉴 시작-->
+				<div class="none">
+                <div style="width:200px; margin:0 20px;">
+					<dl>
+					<dt><a href="http://magazine.hellot.net">스마트매거진</a></dt>
+					   <dd><a href="http://magazine.hellot.net">- i-매거진</a></dd>
+					   <dd><a href="http://magazine.hellot.net/magz/cmm/magazine_ebook.do">- e-매거진</a></dd>
+					</dl>
+					<dl>
+						<dt><a href="/new_hellot/vod/vod_view.php">헬로 VOD</a></dt>
+					</dl>
+					<dl>
+						<dt><a href="/new_hellot/customer/customer_partnership.html?type=gnb">행사참가 및 주관문의</a></dt>
+					</dl>
+					<dl>
+						<dt><a href="#">페이스북</a></dt>
+					   <dd><a href="https://www.facebook.com/hellot.automation/" target="_blank">- 자동화기술</a></dd>
+					   <dd><a href="https://www.facebook.com/hellot.electric/" target="_blank">- 전기기술</a></dd>
+					   <dd><a href="https://www.facebook.com/hellot.electronic/" target="_blank">- 전자기술</a></dd>
+					   <dd><a href="https://www.facebook.com/hellot.atid/" target="_blank">- 자동인식보안</a></dd>
+					   <dd><a href="https://www.facebook.com/hellot.diemold/" target="_blank">- 금형기술</a></dd>
+					   <dd><a href="https://www.facebook.com/hellot.smt/" target="_blank">- 표면실장기술</a></dd>
+					   <dd><a href="https://www.facebook.com/hellot.npnt/" target="_blank">- 신제품신기술</a></dd>
+					</dl>
+				</div>
+                </div>
+                <!-- 4단메뉴 끝-->
+			</div>
+			<a class="close" onclick="allclose();" style="cursor:pointer;"><img alt="" src="../images/common/btn_lyClose_03.png"></a>
+		</div>		
+		<!-- 전체메뉴 E--> 		</div>
+  	</div>
+</div>
+<script type="text/javascript" src="../js/CenterLayer.js"></script>
+<link rel="stylesheet" href="/new_hellot/main/slide/slide.css">	
+<script src="/new_hellot/main/slide/slides.min.jquery.js"></script>
+<script type="text/javascript">
+$(document).ready( function() {
+	
+	$("img[id^=fontBtn_]").click( function(){
+		var contents1 = $(".bbs p").children();
+		var contents2 = contents1.children();
+		var contents3 = contents2.children();
+		 
+		var fontSize1 = contents1.css('fontSize');
+		var fontSize2 = contents2.css('fontSize');
+		var fontSize3 = contents3.css('fontSize');
+		var fontSize4 = $(".bbs p").css('fontSize');
+				
+		var num1 = parseFloat(fontSize1, 10);
+		var num2 = parseFloat(fontSize2, 10);
+		var num3 = parseFloat(fontSize3, 10);
+		var num4 = parseFloat(fontSize4, 10);
+
+		if(this.id == "fontBtn_plus"){
+			if(num1 >= 22 && num2 >= 22 && num3 >= 20 && num4 >= 24){
+				alert("최대 크기입니다.");
+				num1 = 22;
+				num2 = 22;
+				num3 = 20;
+				num4 = 24;
+			}else{
+				num1 += 2;
+				num2 += 2;
+				num3 += 2;
+				num4 += 2;
+			}
+		}else if(this.id == "fontBtn_minus"){
+			if(num1 <= 14 && num2 <= 14 && num3 <= 12 && num4 <= 16){
+				alert("최소 크기입니다.");
+				num1 = 14;
+				num2 = 14;
+				num3 = 12;
+				num4 = 16;
+			}else{
+				num1 -= 2;
+				num2 -= 2;
+				num3 -= 2;
+				num4 -= 2;
+			}
+		}
+		$(".bbs p").css('fontSize', num4+"px");
+		contents1.css('fontSize', num1+"px");
+		contents2.css('fontSize', num2+"px");
+		contents3.css('fontSize', num3+"px");
+	});
+	
+	$('#slides').slides({
+		play: 3000,
+		pause: 2500,
+		hoverPause: true,
+		generatePagination:0
+	}) ;
+});
+
+function CreateBookmarkLink(){	
+	// 로그인 유무
+		var login = false;
+		if(!login){
+		if(confirm("로그인 후 이용해 주세요.")){
+			location.href = "../member/login.html?mgzItem=mgzAssess&"+window.location.href.slice(window.location.href.indexOf('?') + 1);
+		}
+	}else{
+		$("#simple_join").css('display',"block");
+		$('.dim1').css('position',"fixed");
+	}
+}
+
+// 즐겨찾기 추가
+function bookmarkAdd(){
+	if(confirm('즐겨찾기 하시겠습니까?')){
+					document.bookmarkForm.mode.value = 'regist';
+			$("#bookmarkForm").submit();	
+	}
+}
+
+
+//로그인 팝업
+function loginPopup(){
+	window.open("../member/popup_login.html?type=hellot","회원 확인", "width=550, height=550, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+}
+
+//매거진 권한 확인
+function chkMagazineAuth(magazine_group){
+	var public_yymm = "201811";
+	var magazine_cnt = 	0;
+	
+	if(magazine_cnt > 0){
+		var open_url = "http://magazine.hellot.net/magz/article/articleDetail.do?flag=all&showType=showType1&articleId=&articleAllListSortType=sort_1&page=1&selectYearMonth="+public_yymm+"&subCtgId=";
+		window.open(open_url);
+	}else{
+		fncShowPopUp();
+	}
+}
+
+//딤처리를 위해 사용
+function dim(bool){
+	if (typeof bool=='undefined'){
+		bool=true;
+	}
+	document.getElementById('dimmer').style.display=(bool?'block':'none');
+}    
+
+//레이어 팝업
+function fncShowPopUp(){
+	dim(true);
+	CenterLayer.showLayer("pop_apply");
+}
+
+//팝업 닫기
+function popupClose(){
+	dim(false);
+	CenterLayer.hideLayer("pop_apply");
+}
+
+// 기사 댓글 달기
+function registComment(){
+		var login = false;
+		if(!login){
+		if(confirm("로그인 후 이용해 주세요.")){
+			location.href = "../member/login.html?mgzItem=mgzAssess&"+window.location.href.slice(window.location.href.indexOf('?') + 1);
+		}
+	}else{
+		$("#commentForm").submit();
+	}
+}
+
+// 답글달기
+function registReComment(idx){
+	// 로그인 유무
+		var login = false;
+		if(!login){
+		if(confirm("로그인 후 이용해 주세요.")){
+			location.href = "../member/login.html?mgzItem=mgzAssess&"+window.location.href.slice(window.location.href.indexOf('?') + 1);
+		}
+	}else{
+		$("#recommentForm_"+idx).submit();
+	}
+}
+
+// 신고하기 창 띄우기
+function reportCommentLayer(idx,member_id,comment,magazine_idx){
+	// 로그인 유무
+		var login = false;
+		if(!login){
+		if(confirm("로그인 후 이용해 주세요.")){
+			location.href = "../member/login.html?mgzItem=mgzAssess&"+window.location.href.slice(window.location.href.indexOf('?') + 1);
+		}
+	}else{
+		// 신고제한 해당댓글에 1번 신고만
+		$.post("hellot_magazine_comment.php", {
+			mode: "check_report",
+			idx: idx,
+			member_id: member_id,
+			magazine_idx: magazine_idx
+		}, function(result){
+			if(result == 0){
+				$('.layer_popup').slideUp(300);
+				$('.dim').hide();
+				document.report_form.idx.value=idx;
+				$('#report_member').text(member_id);
+				$('#report_com').text(comment);
+				$('#report_comment').center();
+				$('#report_comment').slideDown(300);
+				$('#report_comment').after("<div class=dim></div>"); 
+				$('.dim').height($(window).height());
+			}else{
+				alert('이미 신고한 글입니다.');
+			}
+		});
+	}
+}
+
+// 신고하기
+function reportComment(){
+		var login = false;
+		if(!login){
+		if(confirm("로그인 후 이용해 주세요.")){
+			location.href = "../member/login.html?mgzItem=mgzAssess&"+window.location.href.slice(window.location.href.indexOf('?') + 1);
+		}
+	}else{
+		$("#report_form").submit();
+	}
+}
+
+// 좋아요,싫어요
+function chglikeComment(idx,type){
+	// 로그인 유무
+		var login = false;
+		if(!login){
+		if(confirm("로그인 후 이용해 주세요.")){
+			location.href = "../member/login.html?mgzItem=mgzAssess&"+window.location.href.slice(window.location.href.indexOf('?') + 1);
+		}
+	}else{
+		if(type=='like'){
+		document.chgComment.mode.value = "like";
+		}else if(type=='dislike'){
+			document.chgComment.mode.value = "dislike";
+		}
+		
+		// 좋아요/싫어요 판단 여부
+		$.post("hellot_magazine_comment.php", {
+			mode: "check_assess",
+			idx: idx
+		}, function(result){	
+			if(result == 0){
+				document.chgComment.idx.value = idx;
+				$("#chgComment").submit();
+			}else{
+				alert('이미 좋아요 또는 싫어요 선택한 정보입니다.');
+			}
+		});
+	}
+	
+}
+// 삭제하기
+function deleteComment(idx){
+		var login = false;
+		if(!login){
+		if(confirm("로그인 후 이용해 주세요.")){
+			location.href = "../member/login.html?mgzItem=mgzAssess&"+window.location.href.slice(window.location.href.indexOf('?') + 1);
+		}
+	}else{
+		if(confirm('해당 글은 삭제하시겠습니까?')){
+			document.chgComment.mode.value="delete";
+			document.chgComment.idx.value=idx;
+			$('#chgComment').submit();
+		}
+	}
+}
+
+function addLike(){
+	// 로그인 유무
+		var login = false;
+		if(!login){
+		if(confirm("로그인 후 이용해 주세요.")){
+			location.href = "../member/login.html?mgzItem=mgzAssess&"+window.location.href.slice(window.location.href.indexOf('?') + 1);
+		}
+	}else{
+		if(confirm('좋아요 하시겠습니까?')){
+			document.likeForm.mode.value = 'regist';
+			$("#likeForm").submit();
+		}	
+	}
+}
+
+  window.kakaoAsyncInit = function () {
+    Kakao.init('3a54731e713b6fcf4b5e33045c1540ba');
+    Kakao.Story.createShareButton({
+      container: '#kakaostory-share-button'
+    });
+  };
+
+  (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//developers.kakao.com/sdk/js/kakao.story.min.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'kakao-js-sdk'));
+  
+function shareKakaoStory(){
+	window.open("https://story.kakao.com/s/share?app_key=3a54731e713b6fcf4b5e33045c1540ba&url="
+					+encodeURIComponent(window.location.href),"","width=480,height=490,scrollbars=no");
+}
+
+	//트위터 공유하기
+	shareTwitter=function(){
+		window.open("https://twitter.com/intent/tweet"
+				+"?via="
+				+"&text="+encodeURIComponent( "텐센트, 지스타 2018에서 클라우드 게이밍 솔루션 시범" ) // Title in this html document
+				+"&url="+encodeURIComponent(window.location.href)
+				, "_blank"
+			 , 'width=600,height=450,resizable=yes,scrollbars=yes'
+		);
+	};
+	
+	//네이버 블로그 공유하기
+	shareNaverBlog=function(){
+		window.open("http://blog.naver.com/openapi/share?serviceCode=share&url="
+						+encodeURIComponent(window.location.href)+"&title="+encodeURIComponent( "텐센트, 지스타 2018에서 클라우드 게이밍 솔루션 시범" )
+						+"&timestamp=1461112069962&isMobile=false","","width=600,height=600");
+	};
+</script>
+
+<div id="dimmer"></div>
+
+<div id="Sub">
+	<div class="tit_read">
+		<p>홈 &gt; 전자·ICT &gt; <strong>뉴스&프로덕트</strong></p>
+	</div>
+	<!-- 오른쪽 광고영역 S -->
+	<div class="asid">
+	
+		<!-- 6 -->
+		<div class="bnr">
+		<img src='/_UPLOAD_FILES/banner/image/banner_1515128908.gif' width='250' height='250' rel='495' class='popup' style='cursor:pointer;' alt='ATM아이엔씨 2018.01.05'>		</div>
+
+		<hr/>
+		<br/>
+
+		<!-- 7 -->		
+		<div class="bnr">
+		<ins class='dcmads' style='display:inline-block;width:250px;height:250px'
+    data-dcm-placement='N7384.3359394HELLOTEEKOREA/B20597529.223956006'
+    data-dcm-rendering-mode='script'
+    data-dcm-https-only
+    data-dcm-resettable-device-id=''
+    data-dcm-app-id=''>
+  <script src='https://www.googletagservices.com/dcm/dcmads.js'></script>
+</ins>		</div>
+		
+        <div style="display:inline-block; margin-bottom:10px;">
+                </div>
+        
+        <!-- 스마트매거진 잡지 시작-->
+		<div class="magazine" style="display: inline-block;">
+			<h6>이달의 매거진</h6>				
+			<!-- 잡지이미지 롤링 시작-->
+				<!--span class="ico_cover"></span-->
+				<div id="slides">
+					<div class="slides_container">
+											<div class="magazine_box">
+							<img alt="잡지이미지" src="/_UPLOAD_FILES/magazine/monthly/monthly_1542585744.png" style="display: block; position: absolute; left: 42px; top: 8px;">
+														<a class="ebook" href="http://magazine.hellot.net/aiihtml5/ecatalog5.jsp?Dir=593" target="_blank"></a>
+																				</div>
+											<div class="magazine_box">
+							<img alt="잡지이미지" src="/_UPLOAD_FILES/magazine/monthly/monthly_1542585774.png" style="display: block; position: absolute; left: 42px; top: 8px;">
+														<a class="ebook" href="http://magazine.hellot.net/aiihtml5/ecatalog5.jsp?Dir=592" target="_blank"></a>
+																				</div>
+											<div class="magazine_box">
+							<img alt="잡지이미지" src="/_UPLOAD_FILES/magazine/monthly/monthly_1542585801.png" style="display: block; position: absolute; left: 42px; top: 8px;">
+														<a class="ebook" href="http://magazine.hellot.net/aiihtml5/ecatalog5.jsp?Dir=594" target="_blank"></a>
+																				</div>
+											<div class="magazine_box">
+							<img alt="잡지이미지" src="/_UPLOAD_FILES/magazine/monthly/monthly_1542585837.png" style="display: block; position: absolute; left: 42px; top: 8px;">
+														<a class="ebook" href="http://magazine.hellot.net/aiihtml5/ecatalog5.jsp?Dir=596" target="_blank"></a>
+																				</div>
+											<div class="magazine_box">
+							<img alt="잡지이미지" src="/_UPLOAD_FILES/magazine/monthly/monthly_1542585861.png" style="display: block; position: absolute; left: 42px; top: 8px;">
+														<a class="ebook" href="http://magazine.hellot.net/aiihtml5/ecatalog5.jsp?Dir=595" target="_blank"></a>
+																				</div>
+											<div class="magazine_box">
+							<img alt="잡지이미지" src="/_UPLOAD_FILES/magazine/monthly/monthly_1542585897.png" style="display: block; position: absolute; left: 42px; top: 8px;">
+														<a class="ebook" href="http://magazine.hellot.net/aiihtml5/ecatalog5.jsp?Dir=591" target="_blank"></a>
+																				</div>
+										</div>
+					<div class="slide_btn_prev">
+						<a href="#" class="prev"><img src="/new_hellot/main/slide/arrow-prev.png" alt="Arrow Prev"></a>
+					</div>
+					<div class="slide_btn_next">
+						<a href="#" class="next"><img src="/new_hellot/main/slide/arrow-next.png" alt="Arrow Next"></a>
+					</div>
+				</div>
+			
+			<!-- 잡지이미지 롤링 끝-->
+			<span class="clearfloat"></span>
+			<div>
+				<ul>
+					<li style="float:left; padding:0; width:50%;"><a href="http://www.hellot.net/new_hellot/magazine_info/subscription_info.html"><img src="../images/main/btn_magazine04.jpg" alt="구독신청"/></a></li>
+					<li style="float:left; padding:0; width:50%; "><a href="http://www.hellot.net/new_hellot/magazine_info/ad_info.html"><img src="../images/main/btn_magazine05.jpg" alt="광고안내"/></a></li>						
+				</ul>
+			</div>
+		</div>
+		<!-- 스마트매거진 잡지 끝-->
+                
+        <div class="newest">
+			<h6>전자·ICT <em>최신정보</em></h6>
+            <ul>
+                            <li class="picNews">
+                    <a href="/new_hellot/magazine/magazine_read.html?code=202&sub=004&idx=43828">
+                        <img src="/_UPLOAD_FILES/magazine/image/thumbnail_1543297854.jpg" width="63" height="63"/><p><b>텔릿 ‘LTE Cat 11 데이터카드와 NB-IoT 모듈’, 호주...</b><br></p>		
+                    </a>
+                </li>
+                            <li class="picNews">
+                    <a href="/new_hellot/magazine/magazine_read.html?code=202&sub=004&idx=43827">
+                        <img src="/_UPLOAD_FILES/magazine/image/thumbnail_1543297576.jpg" width="63" height="63"/><p><b>인피니언, 2채널 절연형 게이트 드라이버 IC 제품군 출시</b><br></p>		
+                    </a>
+                </li>
+                            <li class="picNews">
+                    <a href="/new_hellot/magazine/magazine_read.html?code=202&sub=004&idx=43826">
+                        <img src="/_UPLOAD_FILES/magazine/image/thumbnail_1543296537.jpg" width="63" height="63"/><p><b>ams, 베젤리스 스마트폰 위한 슬림한 근접·컬러 센서 모듈 출시</b><br></p>		
+                    </a>
+                </li>
+                            <li class="picNews">
+                    <a href="/new_hellot/magazine/magazine_read.html?code=202&sub=004&idx=43824">
+                        <img src="/_UPLOAD_FILES/magazine/image/thumbnail_1543294950.jpg" width="63" height="63"/><p><b>몰렉스, 자동차 이더넷 플랫폼으로 제17회 시카고 혁신상 수상</b><br></p>		
+                    </a>
+                </li>
+                            <li class="picNews">
+                    <a href="/new_hellot/magazine/magazine_read.html?code=202&sub=004&idx=43819">
+                        <img src="/_UPLOAD_FILES/magazine/image/thumbnail_1543278569.png" width="63" height="63"/><p><b>모기지 소프트웨어 업체 엘리매, AWS 클라우드로 100% 전환</b><br></p>		
+                    </a>
+                </li>
+                        </ul>
+    	</div>
+		
+		<!-- 상세 우측 광고 -->
+		<p class="banner">
+				</p>
+		<p class="banner">
+				</p>
+		<p class="banner">
+				</p>
+		<br/>
+		<!-- 상세 우측 광고 -->
+		
+        <!-- 최신정보 S-->
+        <div class="hownews">
+			<h6>전기·에너지</h6>
+            <ul>
+			            	<li><span><a href="/new_hellot/magazine/magazine_read.html?code=203&sub=004&idx=43833">경남권 시험연구기관, 한국전기연구원-한국산업기술시험원 협력 맞손</a></span></li>
+			            	<li><span><a href="/new_hellot/magazine/magazine_read.html?code=203&sub=004&idx=43832">수소 시내버스 확산 위해 정부-지자체-제작사 손잡다</a></span></li>
+			            	<li><span><a href="/new_hellot/magazine/magazine_read.html?code=203&sub=004&idx=43831">한국전기공사협회, 업계 내일 고민하는 ‘신성장 미래포럼’ 개최</a></span></li>
+			            	<li><span><a href="/new_hellot/magazine/magazine_read.html?code=203&sub=004&idx=43830">한국중부발전, ‘갑질근절 다짐대회’ 개최</a></span></li>
+			            	<li><span><a href="/new_hellot/magazine/magazine_read.html?code=203&sub=004&idx=43829">산업부 2018 한국에너지대상 개최, 빙그레 박영준 대표, 조현수 한화파워시...</a></span></li>
+						</ul>
+      	</div>
+        <!-- 최신정보 E-->
+		<!-- 8 -->
+        <div class="bnr">
+		 <!-- <script src="http://ad.ad4989.co.kr/cgi-bin/PelicanC.dll?impr?pageid=03Em&out=script"></script> --> 
+		<img src='/_UPLOAD_FILES/banner/image/banner_1533603423.jpg' width='250'  rel='597' class='popup' style='cursor:pointer;' alt='지맨스 기사본문'>		</div>
+	</div> 
+    <!-- 오른쪽 광고영역 E -->
+
+	<p class="topBanner">
+    		</p>
+	
+	<div class="article">
+		<div class="article_head">
+        	<h6>텐센트, 지스타 2018에서 클라우드 게이밍 솔루션 시범</h6>
+            <p class="date">입력 : 2018.11.26 09:48</p>
+       	</div>
+        <div class="article_icon">
+        	<span><img id="fontBtn_plus" src="../images/sub/icon_txt_max.gif" style="cursor:pointer;" alt="글자크게보기" title="글자크게"/>
+                  <img id="fontBtn_minus" src="../images/sub/icon_txt_min.gif" style="cursor:pointer;" alt="글자작게" title="글자작게"/></span>
+                <!--div class="keyword">
+                    <<p class="date">기사입력 2018-11-26 08:59</p>-->
+                    <!--<p class="fleft lh21">
+                        <span>연관키워드 :</span> 첨단, 헬로티, 텐센트클라우드, 텐센트 위테스트, 인텔, 지스타, 게이밍솔루션, 게이밍플랫폼, SDK, 엣지컴퓨팅                     </p>-->
+                    
+            <span style="margin-left:15px;"><a href="#replyArea"><img src="../images/sub/icon_talk.gif" alt="댓글달기" title="댓글달기"/></a>
+									<a href="javascript:addLike();"><img src="../images/sub/icon_like.gif" alt="좋아요" title="좋아요"/></a>
+				            	
+                  <a href="javascript:CreateBookmarkLink();"><img src="../images/sub/icon_bookmark.gif" alt="즐겨찾기" title="즐겨찾기"/></a></span>
+                  
+                    <p class="fright">
+                        <a href="javascript:goFaceBook('텐센트, 지스타 2018에서 클라우드 게이밍 솔루션 시범','http://www.hellot.net/new_hellot/magazine/magazine_read.html?code=202&sub=004&idx=43798');"><img src="../images/sub/icon_sns_facebook.gif" alt="페이스북" title="페이스북"/></a>
+                        <a href="javascript:shareTwitter();"><img src="../images/sub/icon_tweter.gif" alt="트위터" title="트위터"/></a>
+                        <a href="javascript:shareKakaoStory();" ><img src="../images/sub/icon_kakao.gif" alt="카카오스토리" title="카카오스토리"/></a>
+						<!--<area shape="circle" coords="498,711,29" id="kakaostory-share-button" data-url="http://www.hellot.net/new_hellot/main/" href="javascript:shareKakaoStory();" target="_blank" />-->
+                        <a href="javascript:shareNaverBlog();"><img src="../images/sub/icon_blog_re.gif" alt="블로그" title="블로그"/></a>
+                    </p>
+        </div>
+		
+	<!--<p class="etc">방문수:99 | 추천수:0</p>-->
+		<div class="bbs" id="articleBody" itemprop="articleBody"><p>[첨단 헬로티]</p>
+<p><br>굴지의 인터넷 서비스 공급업체 텐센트가 지스타(G-STAR) 2018에서 텐센트 클라우드(Tencent Cloud), 텐센트 위테스트(Tencent WeTest) 및 인텔과 공동 개발한 클라우드 게이밍 솔루션(Cloud Gaming Solution)을 시범 보였다.</p>
+<p><br>클라우드 게이밍 솔루션으로 구동되는 클라우드 게임은 현재 고사양 기기에서만 가능한 그래픽 집약적인 게임과 달리, 최종사용자가 언제 어디서든 모든 연결 기기에서 아무런 문제 없이 직접 게임을 즐길 수 있도록 지원한다. 클라우드 게이밍 플랫폼(Cloud Gaming Platform) 아이콘만 클릭하면, 사용자는 즉시 잘 만들어진 클라우드 게임을 즐길 수 있다.</p>
+<p><br>조만간 클라우드 게이밍이 게임 산업에서 인기를 얻을 것으로 보인다. 특히 그래픽 집약적인 온라인 게임과 모바일 게임에서는 더욱 인기를 끌 전망이다. 클라우드 게이밍은 게임 출시, 업데이트 및 유지관리와 관련된 비용을 줄이고, 게임 플레이어의 진화하는 수요를 충족시키도록 지원한다. </p>
+<p><br>텐센트 클라우드, 텐센트 위테스트, 인텔은 굴지의 클라우드 게이밍 솔루션을 만들고, 새로운 게이밍 에코시스템의 개발을 촉진하고자 각자의 핵심 역량을 융합하기 위해 협력하고 있다. </p>
+<p><br>텐센트 클라우드는 최고 수준의 네트워크 기반시설과 엣지 컴퓨팅 역량을 커버하며, 탄력적인 자사의 대규모 컴퓨팅 자원을 바탕으로 게임 유통 채널에 클라우드 게이밍 솔루션을 공급한다. 채널은 SDK(software development kit)를 통해 게임업체가 플랫폼에서 게임 홍보, 버전 업데이트, 데이터 분석 및 기타 과제를 관리하도록 지원하는 클라우드 게이밍 플랫폼을 신속하게 구축한다. </p>
+<p><br>그뿐 아니라 클라우드 게이밍 솔루션은 안드로이드 가상화, 저지연 영상 스트리밍, 멀티기기 변환 역량을 바탕으로, 가상화 솔루션을 클라우드 게임플레이에 통합하는 텐센트 위테스트로 보완된다. </p>
+<p><br>또한, 인텔 제온(R) 프로세서를 기반으로 만들어진 클라우드 게이밍 솔루션은 독특한 클라우드 렌더링과 영상 변환 기술을 제공하는 인텔 아이리스 프로(R) 그래픽 카드와 후디니(Houdini) 명령 번역 소프트웨어 패키지도 통합한다. 이 소프트웨어 패키지는 클라우드 게임에 높은 동시성 기본 솔루션을 제공하고, 클라우드 게임 플레이어에게 향상된 경험을 제시한다.</p>
+<p><br>공동 개발된 클라우드 게이밍 솔루션은 국제 게임 산업에서 기술의 혁신과 개발을 도모해온 텐센트의 강점을 강조한다. 텐센트 클라우드는 텐센트의 광범위한 게임 서비스 공급 경험을 기반으로 혁신적인 솔루션에 생명을 불어넣고, 개방적인 협력 에코시스템을 함께 구축함으로써 국제 게임 산업의 추가적인 발전을 도모하고자 파트너들과 협력하는 데 전념한다.</p></div>
+
+		<!-- s: 다운로드 버튼-->
+		
+		
+
+
+
+
+		<!-- E: 다운로드 버튼-->
+
+		<!-- 작성자 등록 : S -->
+				<div class="author">/서재창 기자(prmoed@hellot.net)</div>
+				<!-- 작성자 등록 : E -->
+		
+		<div class="copyright">Copyright ⓒ 첨단 & Hellot.net</div>
+		<!-- 요약기사 s-->
+		<div  style="display:none;  padding:0 20px;" >
+			<div class="summary">
+				<p>이 기사는 <span></span>의 요약글입니다. <기사 상세내용보기>를 클릭하시면 전체 기사를 보실 수 있습니다.</p>
+			</div>
+						<div style="text-align:center; margin:0 0 50px 0;"><a class="btn_big" href="javascript:loginPopup();">기사 상세내용보기</a></div>
+					</div>
+		<!-- 요약기사 e-->
+		
+	<br>
+	
+		<p class="banner">
+    			</p>
+
+
+		<div style="display: inline-block;margin-bottom: 20px;">
+			
+			<!-- 상세 하단 좌측 -->
+            <div style="float:left;margin-left: 20px;">
+				<img src='/_UPLOAD_FILES/banner/image/banner_1533021694.jpg' width='325' height='150' rel='591' class='popup' style='cursor:pointer;' alt='어드밴텍 2018.07.31'>			</div>  
+			
+			<!-- 상세 하단 우측 -->
+			<div style="float:left;margin-left: 20px;">
+			<img src='/_UPLOAD_FILES/banner/image/banner_1540985604.png' width='325' height='150' rel='619' class='popup' style='cursor:pointer;' alt='디지키 2018.11'>			</div>
+		</div>
+		
+				
+		<dl>
+			<dt><img src="../images/sub/t_prev.gif" alt="이전글"></dt>
+			<dd><a href="/new_hellot/magazine/magazine_read.html?code=202&sub=004&idx=43806&page=&list=">SK이노베이션-텔레콤-하이닉스, CES2019서 모빌리티 ‘완전체’ 기술 동반 전시</a></dd>
+			<dt><img src="../images/sub/t_next.gif" alt="다음글"></dt>
+			<dd><a href="/new_hellot/magazine/magazine_read.html?code=202&sub=004&idx=43799&page=&list=">중국 항저우의 샤오산구, 우선순위로 디지털 경제 선정</a></dd>
+		</dl>
+		<div class="listbtn">
+			<div class="fleft">
+				<a class="btn08" href="../magazine/magazine_list.html?code=202">전체기사</a>
+			</div>
+			<div class="fright">
+				<a class="btn08" href="../magazine/magazine_list.html?code=202&sub=004&page=">목록보기</a>
+			</div>
+		</div>
+        
+	</div>
+	
+    <div style="display: inline-block;margin-bottom: 20px;">
+	
+				
+		<!-- 4 -->
+		<!-- <div style="float:left; margin:0 110px 0 0px;"><script src="http://ad.ad4989.co.kr/cgi-bin/PelicanC.dll?impr?pageid=03F3&out=script"></script></div>
+		-->
+		<div style="float:left; margin:0 110px 0 0px;">
+		<img src='/_UPLOAD_FILES/banner/image/banner_1531703636.png' width='300' height='250' rel='580' class='popup' style='cursor:pointer;' alt='교육원 법정의무교육'>		</div>
+		
+		<!-- 5 -->
+		<!-- <div style="float:left"><script src="http://ad.ad4989.co.kr/cgi-bin/PelicanC.dll?impr?pageid=03El&out=script"></script></div> -->
+		<div style="float:left">
+		<img src='/_UPLOAD_FILES/banner/image/banner_1536019540.gif' width='300' height='250' rel='604' class='popup' style='cursor:pointer;' alt='다이어리 홍보'>		
+		</div>
+	
+		
+		<!-- 3 -->
+		<!-- <div style="float:left; margin:0 110px 0 0px;"><script src="http://ad.ad4989.co.kr/cgi-bin/PelicanC.dll?impr?pageid=03F3&out=script"></script></div> -->
+		
+		<!-- 4 -->
+		<!-- <div style="float:left"><script src="http://ad.ad4989.co.kr/cgi-bin/PelicanC.dll?impr?pageid=03El&out=script"></script></div> -->
+
+	
+	</div>
+    
+	<iframe id="content" src="http://www.hellot.net/new_hellot/magazine/magazine_iframe.html?keyword=첨단, 헬로티, 텐센트클라우드, 텐센트 위테스트, 인텔, 지스타, 게이밍솔루션, 게이밍플랫폼, SDK, 엣지컴퓨팅&idx=43798&list=" scrolling="no" frameborder="0" style="width:710px;height:230px;"></iframe>
+	<iframe src="http://www.chomdanmarket.com/open_api/relative_product.php?keyword=첨단, 헬로티, 텐센트클라우드, 텐센트 위테스트, 인텔, 지스타, 게이밍솔루션, 게이밍플랫폼, SDK, 엣지컴퓨팅&seller_id=" scrolling="no" frameborder="0"  style="width:710px;height:320px;"></iframe>
+
+<!-- 카카오 기사 송고 태그 : S -->
+<img src="http://cp.news.search.daum.net/api/publish.json?nurl=http%3A%2F%2Fwww.hellot.net%2Fnew_hellot%2Fmagazine%2Fmagazine_read.html%3Fcode%3D202%26sub%3D200%26idx%3D43798%26ver%3D1&xml_url=http%3A%2F%2Fwww.hellot.net%2Fportal_article%2Fkakao%2Farticle_daum_xml.php%3Fidx%3D43798&channel=it" style="display:none;"/>
+<!-- 카카오 기사 송고 태그 : E -->
+
+<!-- 기사 댓글/답글 달기 S 2016-02-29 -->
+<script type="text/javascript">
+// 답글창 나타내기
+function recommentRegistView(idx){
+	$('#cmtW_'+idx).toggle();
+}
+
+// 글자수제한하기
+function fc_chk_byte(aro_name,ari_max,type){
+
+	var ls_str = aro_name.value; // 이벤트가 일어난 컨트롤의 value 값
+	var li_str_len = ls_str.length; // 전체길이
+
+	// 변수초기화
+	var li_max = ari_max; // 제한할 글자수 크기
+	var i = 0; // for문에 사용
+	var li_byte = 0; // 한글일경우는 2 그밗에는 1을 더함
+	var li_len = 0; // substring하기 위해서 사용
+	var ls_one_char = ""; // 한글자씩 검사한다
+	var ls_str2 = ""; // 글자수를 초과하면 제한할수 글자전까지만 보여준다.
+
+	for(i=0; i< li_str_len; i++){
+		// 한글자추출
+		ls_one_char = ls_str.charAt(i);
+
+		li_byte++;
+
+		// 전체 크기가 li_max를 넘지않으면
+		if(li_byte <= li_max){
+			li_len = i + 1;
+		}
+	}
+	if(type=='co'){
+		$("#commentCnt").text(li_byte);
+	}
+	// 전체길이를 초과하면
+	if(li_byte > li_max){
+		alert( li_max + " 글자를 초과 입력할수 없습니다. \n 초과된 내용은 자동으로 삭제 됩니다. ");
+		ls_str2 = ls_str.substr(0, li_len);
+		aro_name.value = ls_str2;
+		if(type=='co'){
+			$("#commentCnt").text(li_max);
+		}
+	}
+	aro_name.focus(); 
+}
+</script>
+<a name="replyArea"></a>
+<div class="comentwrap">
+	<!-- s:댓글 쓰기 -->
+	<div class="coment_write">
+		<form name="commentForm" id="commentForm" method="post" action="./hellot_magazine_comment.php" enctype="multipart/form-data">
+			<input type="hidden" name="mode" id="mode" value="regist" />
+			<input type="hidden" name="magazine_idx" id="magazine_idx" value="43798" />
+			<hgroup>
+				<h6>댓글쓰기</h6>
+				<p class="acount"><em id="commentCnt">0</em>/<span>500</span>자</p>
+			</hgroup>
+			<textarea name="comment" id="comment" cols="30" rows="3" onkeyup="fc_chk_byte(this,500,'co');" placeholder="욕설 또는 주제와 상관없는 글은 삭제될 수 있습니다.(500자 이내)" ></textarea>
+			<a class="bt bt02 large" onclick="javascript:registComment();">등록</a>
+		</form>
+	</div>
+	<!-- e:댓글 쓰기 -->
+	
+	<!-- 테스트 
+	<div>
+	https://search.naver.com/search.naver?&where=news&query=%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C&sm=tab_pge&sort=0&photo=0&field=0&reporter_article=&pd=0&ds=&de=&docid=&nso=so:r,p:all,a:all&mynews=0&cluster_rank=21&start=21&refresh_start=0	</div>
+	-->
+	<div class="coment_view">
+		<hgroup>
+			<h6>전체 댓글수 <em class="fc02">0</em></h6>
+			<p class="align"><a href="/new_hellot/magazine/magazine_read.html?code=MA001&sub=200&idx=43798&commentOrder=date" class='fc02'>최신순</a>
+			| <a href="/new_hellot/magazine/magazine_read.html?code=MA001&sub=200&idx=43798&commentOrder=popular" >인기순</a></p>
+		</hgroup>
+		
+		<ul class="coment_box">
+		
+						<p class="nodata">댓글이 없습니다.</p>
+				</ul>
+	</div>
+	<div class="paging mt30 mb30" id="paging">
+</div></div>
+<!-- 기사 댓글/답글 달기 E 2016-02-29 -->
+
+<div id="pop_apply" class="pop_wrap" style="display: none;"> 
+	<div class="pop_content"> 
+		<h3><span class="point">스마트매거진 구독회원</span>에게<br>제공되는 서비스 입니다.</h3>
+        <a href="javascript:popupClose();" class="close_layer"><img alt="" src="../images/common/btn_lyClose_02.gif"></a>
+		<div><img src="../images/common/img_magazine02.jpg"></div>
+		<div style="padding:35px 0 55px 0; text-align:center;">
+			<a class="btn09_big" alt="스마트매거진 구독신청 하기" onFocus="this.blur();" style="cursor:pointer;" href="../magazine_info/subscription_request.html">스마트매거진 구독신청 하기</a>
+		 </div>
+	 </div>
+</div>
+
+<!-- s:신고하기 팝업 -->
+<div id="report_comment" class="layer_popup" style="display:none;">
+	<form name="report_form" id="report_form" method="post" action="./hellot_magazine_comment.php" enctype="multipart/form-data">
+	<input type="hidden" name="mode" id="mode" value="report" />
+	<input type="hidden" name="magazine_idx" id="magazine_idx" value="43798" />
+	<input type="hidden" name="code" id="code" value="MA001" />
+	<input type="hidden" name="sub" id="sub" value="200" />
+	<input type="hidden" name="idx" id="idx" />
+	<hgroup>
+		<h1>신고하기</h1>
+		<a class="layer_close" onclick="javascript:layerClose();"><span class="hide">닫기</span></a>
+	</hgroup>
+	<div class="layer_contents"> 
+		<dl>
+			<dt>작성자 : </dt>
+			<dd id="report_member"></dd>
+			<dt>내 용 : </dt>
+			<dd id="report_com"></dd>
+		</dl>
+		<div>
+			<strong>· 사유선택</strong>
+			<ul>
+				<li><label><input type="radio" name="reportReason" value="광고게시물"/><span>광고게시물</span></label></li>
+				<li><label><input type="radio" name="reportReason" value="음란성 있는 글"/><span>음란성 있는 글</span></label></li>
+				<li><label><input type="radio" name="reportReason" value="명예훼손/사생활 침해 및 저작권침해"/><span>명예훼손/사생활 침해 및 저작권침해</span></label></li>
+			</ul>
+		</div>
+		
+		<div class="btnswrap">
+			<input type="button" class="bt bt03 small" value="신고하기" onclick="javascript:reportComment();"/>
+			<input type="reset" class="bt bt02 small" value="취소" onclick="javascript:layerClose();"/>
+		 </div>
+	</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+//layer
+$.fn.center = function(){
+    this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
+    this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
+    return this;
+}
+
+layerClose = function(){
+    $('.layer_popup').slideUp(300);
+    $('.dim').remove();
+}
+</script>
+<!-- e:신고하기 팝업 -->
+
+<form name="chgComment" id="chgComment" method="post" action="./hellot_magazine_comment.php" enctype="multipart/form-data">
+	<input type="hidden" name="mode" id="mode" />
+	<input type="hidden" name="idx" id="idx" />
+	<input type="hidden" name="magazine_idx" id="magazine_idx" value="43798"/>
+</form>
+
+<form name="bookmarkForm" id="bookmarkForm" method="post" action="./bookmark_action.php" enctype="multipart/form-data">
+	<input type="hidden" name="mode" id="mode" value="regist" />
+	<input type="hidden" name="magazine_idx" id="magazine_idx" value="43798" />
+	<input type="hidden" name="code" id="code" value="MA001" />
+	<input type="hidden" name="sub" id="sub" value="200" />
+</form>
+
+<form name="likeForm" id="likeForm" method="post" action="./like_action.php" enctype="multipart/form-data">
+	<input type="hidden" name="mode" id="mode" value="regist" />
+	<input type="hidden" name="magazine_idx" id="magazine_idx" value="43798" />
+	<input type="hidden" name="code" id="code" value="MA001" />
+	<input type="hidden" name="sub" id="sub" value="200" />
+</form>
+<!-- 즐겨찾기 기사가 있는경우 S -->
+<div id="simple_join" class="layer_popup_style02" style="display:none;">
+	<hgroup>
+		<h1>즐겨찾기</h1>
+		<button type="button" class="layer_close" onclick="javascript:layerClose1()">닫기</button>
+	</hgroup>
+	<!-- s:content -->
+	<div class="layer_contents">
+		<div class="boxwrap">
+			            <div class="bookmark_box"><a href="javascript:bookmarkAdd();">
+            	<div class="bookmark_boxtxt"><img alt="" src="../images/sub/icon_bookmark_add.gif" style="padding: 10px 0;"><br>즐겨찾기 추가</div></a>
+			</div>
+  		</div> 
+	</div>
+	<!-- e:content -->
+</div>
+<!-- 즐겨찾기 기사가 있는경우 E -->
+<div class="dim1" style="position:relative;"></div>
+<script language='javascript'>
+<!-- 
+function changeHeight(id) { 
+	var the_height=document.getElementById(id).contentWindow.document.body.scrollHeight; 
+	document.getElementById(id).height=the_height;
+} 
+layerClose1 = function(){
+    $('#simple_join').slideUp(300);
+	$('.dim1').css('position',"relative");
+}
+//본문 삽입 광고
+if(insert_add_flag == "Y"){
+	insert_add();
+}
+//-->
+</script>
+
+</div>
+<div id="Footer">
+<p class="banner">
+	<img src='/_UPLOAD_FILES/banner/image/banner_1541200020.jpg' width='980' height='80' rel='621' class='popup' style='cursor:pointer;' alt='마우저 2018.11'></p>
+
+<div class="footer_box">
+	<ul>
+		<li><a href="/new_hellot/customer/customer_write.html?type=education">온-오프라인 교육문의<i><img src="../images/footer/icon_footer1.png" alt=""></i></a></li>
+		<li><a href="/new_hellot/customer/customer_write.html?type=design">디자인기획/제작문의<i><img src="../images/footer/icon_footer2.png" alt="" /></i></a></li>
+		<li><a href="/new_hellot/customer/customer_write.html?type=adver">광고마케팅문의<i><img src="../images/footer/icon_footer3.png" alt="" /></i></a></li>
+		<li class="line2"><a href="/new_hellot/customer/customer_write.html?type=web">웹사이트개발/<br />호스팅문의<i><img src="../images/footer/icon_footer4.png" alt="" /></i></a></li>
+	</ul>
+</div>
+
+<!-- 구독신청 S -->
+<div  class="footer_newsletter">
+	<div class="newscont">
+    	<ul>
+            <li>
+                <div class="letter_input">
+                    <h5>뉴스레터 신청</h5>
+                    <span style="float:"><input type="text" name="apply_email_nm" id="apply_email_nm" size="12" placeholder="이름(국문)"></span>
+                    <span><input type="text" name="apply_email" id="apply_email" size="40" placeholder="정보를 받을 수 있는 이메일 입력"></span>
+                    <span><button type="button" class="btn_letter" onclick="javascript:fn_apply_letter();">신청하기</button></span>
+                </div>
+            </li>
+            <li>
+            	<div class="letter_box">
+                	<p><label><input type="checkbox" name="letter_agreement" id="letter_agreement" value="news"> 뉴스 제공을 위한 개인정보를 수집하는데 동의합니다 </label></p>
+                </div>
+                <div class="clause">
+                <p>- 개인정보 수집·이용 목적: 주식회사 첨단 뉴스/전시회/상품등  소식 및 행사  관련 이메일 발신</p>
+				<p>- 개인정보 수집 항목: 이메일 주소, 성명</p>
+                <p>- 개인정보 보유·이용 기간: 이메일 수신 거부 시 지체 없이 파기 합니다.</p></div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 구독신청 E -->
+
+<div class="footer">
+	<div class="footer_link">
+		<div class="footer_area">
+			<ul>
+				<li class="first"><a href="http://www.hellot.net/new_hellot/company/company01.html">회사소개</a></li>
+				<li><a href="javascript:javascript:openAgreements();" >이용안내</a></li>
+				<li><a href="http://www.hellot.net/new_hellot/customer/customer_main.html">고객센터</a></li>
+				<li><a href="javascript:openAgreementsprivate();">개인정보취급방침</a></li>
+				<!--<li><a href="javascript:openRules();">이메일무단수집금지</a></li>-->
+				<li><a href="http://www.hellot.net/new_hellot/magazine_info/subscription_request.html">구독신청</a></li>
+				<li><a href="/new_hellot/customer/customer_partnership.html?type=banner">광고제휴</a></li>
+			</ul>
+			<div class="select">
+				<select name= "select" onchange="go_company(this.value);">
+					<option value="" selected>FAMILY SITE</option>
+					<option value="http://www.cyber.co.kr/">BM성안당</option>
+					<option value="http://edu.cyber.co.kr/">(주)사이버출판사</option>
+					<option value="http://blog.naver.com/tgoon21/">티군</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="footer_area">
+		<div class="policy">
+			<div class="address">
+				<a target="_blank" title="주식회사 첨단" href="http://www.hellot.net/new_hellot/company/company01.html" class="logo"><em class="hidden">주식회사 첨단</em></a>
+				<ul>                
+					<li class="first">상호명(명칭) : (주)첨단</li>
+					<li>등록번호 : 서울,자00420</li>
+					<li>등록일자 : 2013년05월15일</li>
+					<li>제호 :헬로티(helloT)</li>
+					<li>발행인 : 이종춘</li>
+					<li class="first">편집인 : 김진희</li>
+					<li>본점 : 서울시 마포구 양화로 127, 3층, 지점 : 경기도 파주시 심학산로 10, 3층 </li>
+					<li class="first">발행일자 : 2012년 4월1일</li>
+					<li>청소년보호책임자 : 김유활</li>
+					<li>대표이사 : 이준원</li>
+					<li>사업자등록번호 : 118-81-03520 </li>
+					<li class="first">전화 : 02-3142-4151</li>
+					<li>팩스 : 02-338-3453 </li>
+					<li class="first">통신판매번호 : 제 2013-서울마포-1032호</li>
+				</ul>
+				<!--span class="copyight_title">스마트매거진의 모든 콘텐트(기사)는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.</span-->
+				<p class="copyight">copyright(c) HelloT all right reserved </p>
+
+				<script language= "javascript">
+				function openRules(){
+					window.open("http://www.hellot.net/new_hellot/member/popup_rule_per.html", "_blank", "width=650, height=700, location=no, status=no, realzable=no, scrollbars = yes");
+				}
+				
+				function openAgreements(){
+					window.open("http://www.hellot.net/new_hellot/member/popup_agreement.html", "_blank", "width=650, height=700, location=no, status=no, realzable=no,scrollbars = yes");
+				}
+				
+				function openAgreementsprivate(){
+					window.open("http://www.hellot.net/new_hellot/member/popup_agreement.html?tab=3", "_blank", "width=650, height=700, location=no, status=no, realzable=no,scrollbars = yes");
+				}
+				
+				function openAgreementsMarket(){
+					window.open("http://www.hellot.net/new_hellot/member/popup_agreement.html?tab=4", "_blank", "width=650, height=700, location=no, status=no, realzable=no,scrollbars = yes");
+				}
+				
+				function go_company(ele){
+					window.open(ele,"go");
+				}
+				</script>
+			</div>	
+							
+			<div class="footer_button">
+				<a class="mobile"><img src="../images/footer/btn_mobileView.gif" alt="모바일버젼보기" /></a>
+				<span class="qrcode"><img src="../images/footer/img_qrcode.gif?ver=01" alt="QR CODE" /></span>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+  
+  var _paq = _paq || [];
+  
+			_paq.push(['setCustomVariable', 1, 'userId', '', 'visit']);
+	
+    _paq.push(['setCustomVariable', 1, 'category', '전자·ICT', 'page']);
+  
+  
+    _paq.push(['setCustomVariable', 2, 'subCategory', '전자·ICT-뉴스&프로덕트', 'page']);
+  
+  //_paq.push(['trackPageView']);
+  //_paq.push(['enableLinkTracking']);
+
+   
+		_paq.push(['trackPageView']);
+  
+  _paq.push(['enableLinkTracking']);
+
+
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.hellot.net/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 2]);
+
+	
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+  
+</script>
+<noscript><p><img src="http://piwik.hellot.net/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+<!--구글 방문자 분석-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-30927900-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!--구글 방문자 분석 끝-->
+<script type="text/javascript">
+	
+	//뉴스레터 신청
+	function fn_apply_letter(){
+		var apply_name 	= $("#apply_email_nm").val();
+		var apply_email	= $("#apply_email").val();
+		
+		//입력 정보 확인
+		if(!apply_name){
+			alert("신청자 이름을 입력해 주세요.");
+			$("#apply_email_nm").focus();
+			return;
+		}else if(!apply_email){
+			alert("신청자 이메일을 입력해 주세요.");
+			$("#apply_email").focus();
+			return;
+		}else if(!$("#letter_agreement").is(":checked")){
+			alert("개인정보 수집에 동의해 주세요.");
+			$("#letter_agreement").focus();
+			return;
+		}else{
+			var regExp = /[0-9a-zA-Z][_0-9a-zA-Z-]*@[_0-9a-zA-Z-]+(\.[_0-9a-zA-Z-]+){1,2}$/;
+			if (!apply_email.match(regExp)){
+				alert("잘못된 이메일 형식입니다.");
+				$("#apply_email").val("").focus();
+				return;
+			}
+		}
+		
+		//신청 정보 전송
+		var send_data = "name="+apply_name+"&email="+apply_email+"&site=www.hellot.net";
+		$.ajax({
+			type: "post",
+			data: send_data,
+			url: "/new_hellot/newsletter/chkEmail.php",
+			success: function(result) {
+				var result_comment = "뉴스레터 신청이 완료 되었습니다.";
+				if(result == "10"){
+					result_comment = "이미 신청된 이메일 입니다.";
+				}
+				alert(result_comment);
+				$("#apply_email_nm").val("");
+				$("#apply_email").val("");
+				$("#letter_agreement").attr('checked', false);
+			}
+		});
+	}
+</script></div>
+<!-- 5 이달의 매거진 영역과 충돌 발생....17년 10월 24일 확인-->
+<!--<script src="http://ad.ad4989.co.kr/cgi-bin/PelicanC.dll?impr?pageid=03En&out=script"></script>-->
+</body>
+</html>

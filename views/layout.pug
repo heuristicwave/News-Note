@@ -7,13 +7,21 @@ html
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     link(rel='stylesheet' href='/main.css')
   body
-    .container
+    .first
       .profile-wrap
         .profile
           if user && user.id
             .user-name= '안녕하세요! ' + user.nick + '님'
             input#my-id(type='hidden' value=user.id)
             a#logout.btn(href='/auth/logout') 로그아웃
+            .second
+              .second-thumb
+                h1 Jihun's Cloud Tech
+                h3 Lastest News and Articles
+            form#hashtag-form(action='/post/hashtag')
+              input(type='text' name='hashtag' placeholder='#없이 태그를 검색하세요')
+              button.btnSearch
+
           else
             form#login-form(action='/auth/login' method='post')
               .input-group
@@ -24,8 +32,10 @@ html
                 input#password(type='password' name='password' required)
               if loginError
                 .error-message= loginError
-              a#join.btn(href='/join') 회원가입
+              .input-group3
               button#login.btn(type='submit') 로그인
+              a#join.btn(href='/join') 회원가입
         footer
 
+    .container
       block content

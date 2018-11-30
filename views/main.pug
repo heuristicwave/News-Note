@@ -2,25 +2,21 @@ extends layout
 
 block content
   .timeline
-  h1 News Note
+    .search
     if user
+    h1 Save your articles
       div
         form#twit-form(action='/post' method='post' enctype='multipart/form-data')
-          .input-group
-            textarea#twit(name='content' maxlength=140)
+          .input-group2
+            textarea#twit(name='content' maxlength=140 placeholder='#example #write #your #hashtag')
           .img-preview
-            img#img-preview(src='' style='display: none;' width='250' alt='미리보기')
+            img#img-preview(src='' style='display: none;' width='250' alt='업로드 준비완료')
             input#img-url(type='hidden' name='url')
           div
-            label#img-label(for='img') 사진 업로드
+            label#img-label(for='img')
             input#img(type='file' accept='image/*')
-            label#link-label(for='link') 링크 업로드
-            input#link(type='file' accept='link/*')
-            button#twit-btn.btn(type='submit') 올리기
-    .twits
-      form#hashtag-form(action='/post/hashtag')
-        input(type='text' name='hashtag' placeholder='#없이 태그를 검색하세요')
-        button.btn 검색
+            button#twit-btn.btnCloud(type='submit')
+  .twits
       for twit in twits
         .twit
           input.twit-user-id(type='hidden' value=twit.user.id)
@@ -29,7 +25,7 @@ block content
           .twit-content= twit.content
           if twit.img
             .twit-img
-              img(src=twit.img alt='섬네일')
+              img(src=twit.img alt='해당자료로 이동합니다' class="btn" onclick="window.open(src);")
   script.
     if (document.getElementById('img')) {
       document.getElementById('img').addEventListener('change', function (e) {
@@ -48,26 +44,6 @@ block content
           }
         };
         xhr.open('POST', '/post/img');
-        xhr.send(formData);
-      });
-    }
-    else if (document.getElementById('link')) {
-      document.getElementById('link').addEventListener('change', function (e) {
-        var formData = new FormData();
-        console.log(this, this.files);
-        formData.append('link', this.files[0]);
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-          if (xhr.status === 200) {
-            var url = JSON.parse(xhr.responseText).url;
-            document.getElementById('link-url').value = url;
-            document.getElementById('link-preview').src = url;
-            document.getElementById('link-preview').style.display = 'inline';
-          } else {
-            console.error(xhr.responseText);
-          }
-        };
-        xhr.open('POST', '/post/link');
         xhr.send(formData);
       });
     }
